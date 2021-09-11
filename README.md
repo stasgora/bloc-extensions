@@ -19,7 +19,7 @@ Simplifies common state transition sequences by abstracting away most implementa
 
 ### 🚧 WIP [Reloadable Bloc](https://github.com/stasgora/bloc-extensions/blob/master/reloadable_bloc/README.md) 🚧
 
-Automatically triggers state reloading whenever its page becomes visible
+Provides route visibility callbacks that can be used for content reloading
 
 
 <!---

@@ -8,14 +8,14 @@
 <a href="https://github.com/dart-lang/lints"><img src="https://img.shields.io/badge/style-recommended-40c4ff.svg" alt="style: effective dart"></a>
 <a href="https://github.com/stasgora/bloc-extensions/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
 
-An extension to the bloc state management library which simplifies common state transitions.
+Extension to the Bloc library that simplifies common state transition sequences
 </div>
 
 ---
 
 ## Use case
-Stateful extension is built to support the
-commonly used patterns of __data loading__ and __submission__.
+Stateful extension is built to support __data loading__ and __submission__ 
+patterns which are commonly implemented using Bloc.
 Each one of them usually consist of the following states:
 `SubjectInitial`, `SubjectActionInProgress`, `SubjectActionSuccess`, `SubjectActionFailure`
 
@@ -30,7 +30,7 @@ transitions leaving only the logic to be supplied by the implementer.
 
 ## Usage comparison
 
-Example of a generic cubit that provides some page data and allows it to display a loading indicator
+Example of a generic cubit that provides state to a page, allowing it to display a loading indicator
 
 ### Cubit
 
@@ -115,6 +115,17 @@ class PageData extends Equatable {
 
 </td></tr>
 </table></div>
+
+## Advantages
+Main advantages of using the Stateful extension:
+- __Cubit / Bloc simplification__ - you don't have to worry
+about states, just focus on the logic and the data it changes
+- __State simplification__ - no more repeating the same inheritance tree
+for each component, just focus on the data that's being provided
+- __Uniform state types across the whole codebase__ - aside from
+the standardization itself this makes it easier to reuse state dependent
+widgets across multiple UI components (like showing a loading indicator
+on `ActionStatus.ongoing` or an error message on `ActionStatus.failed`).
 
 ## Maintainers
 - [Stanisław Góra](https://github.com/stasgora/)

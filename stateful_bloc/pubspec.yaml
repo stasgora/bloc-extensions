@@ -1,17 +1,21 @@
 name: stateful_bloc
-description: An extension to the bloc state management library that simplifies common state transition sequences
+description: Extension to the Bloc library that simplifies common state transition sequences
+repository: https://github.com/stasgora/bloc-extensions/tree/master/stateful_bloc
+issue_tracker: https://github.com/stasgora/bloc-extensions/issues
+
 version: 1.0.0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  bloc: ^7.0.0
+  bloc: ^7.1.0
 
   equatable: ^2.0.0
   meta: ^1.3.0
 
 dev_dependencies:
+  test: ^1.17.12
   mocktail: ^0.1.2
   lints: ^1.0.1
   coverage: ^1.0.3

@@ -1,9 +1,9 @@
-/// An extension to the bloc state management library
+/// Extension to the Bloc library
 /// that simplifies common state transition sequences.
 ///
 /// ## Use case
-/// Stateful extension is built to support the
-/// commonly used patterns of __data loading__ and __submission__.
+/// Stateful extension is built to support __data loading__ and __submission__
+/// patterns which are commonly implemented in using Bloc.
 /// Each one of them usually consist of the following states:
 /// * `SubjectInitial`
 /// * `SubjectActionInProgress`

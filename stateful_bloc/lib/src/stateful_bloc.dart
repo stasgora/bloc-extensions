@@ -14,12 +14,12 @@ import 'stateful_state.dart';
 /// that automatically tracks and sets the commonly used page state
 /// types using enum fields instead of the usual inheritance tree.
 ///
-/// Whether you need a loading behaviour, submission or both just by:
-/// * mixing with [StatefulBloc] / [StatefulCubit]
-/// * wrapping your state with [StatefulState]
-/// * wrapping your logic with [load] / [submit]
+/// Steps to use:
+/// * mix with [StatefulBloc] / [StatefulCubit]
+/// * wrap your state with [StatefulState]
+/// * wrap your logic with [load] / [submit]
 ///
-/// you can react to the current status in your widgets
+/// You can react to the current status in your widgets
 /// (like showing a loading indicator on [ActionStatus.ongoing]
 /// or an error message on [ActionStatus.failed]).
 /// Your state is accessible in [StatefulState.data].

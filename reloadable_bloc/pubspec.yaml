@@ -1,5 +1,8 @@
 name: reloadable_bloc
-description: An extension to the bloc state management library which automatically triggers state reloading
+description: Extension to the Bloc library that provides route visibility callbacks
+repository: https://github.com/stasgora/bloc-extensions/tree/master/reloadable_bloc
+issue_tracker: https://github.com/stasgora/bloc-extensions/issues
+
 version: 1.0.0
 
 environment:
