@@ -50,7 +50,7 @@
 /// are passed to them. Final status is determined by its returning value.
 /// Each underlying state type transition can also change its data.
 /// Check [StatefulBloc.load] and [StatefulBloc.submit] for the details.
-/// 
+///
 /// ## Example
 /// ### From
 /// ```dart

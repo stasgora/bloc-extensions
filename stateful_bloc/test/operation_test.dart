@@ -48,14 +48,20 @@ void main() {
       group('On success', () {
         group('Emits correct states', () {
           test('when finish is used', () => testRun(type: type));
-          test('when cancel is used', () => testRun(
-            type: type,
-            result: Action.cancel(),
-          ));
-          test('when fail is used', () => testRun(
-            type: type,
-            result: Action.fail(),
-          ));
+          test(
+            'when cancel is used',
+            () => testRun(
+              type: type,
+              result: Action.cancel(),
+            ),
+          );
+          test(
+            'when fail is used',
+            () => testRun(
+              type: type,
+              result: Action.fail(),
+            ),
+          );
         });
         test('emits initial data', () {
           testRun(type: type, initial: Data.initial);
