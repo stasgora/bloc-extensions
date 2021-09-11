@@ -14,3 +14,4 @@ dependencies:
 dev_dependencies:
   mocktail: ^0.1.2
   lints: ^1.0.1
+  coverage: ^1.0.3
