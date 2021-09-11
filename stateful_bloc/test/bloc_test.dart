@@ -41,7 +41,7 @@ void main() {
         await expectStates(
           stream: cubit.stream,
           type: type,
-          outcome: Outcome.fail(),
+          outcome: Outcome.failed(),
         );
         expect(expectedError, error);
       }
@@ -91,7 +91,7 @@ void main() {
         await expectStates(
           stream: bloc.stream,
           type: type,
-          outcome: Outcome.fail(),
+          outcome: Outcome.failed(),
         );
         expect(expectedError, error);
       }

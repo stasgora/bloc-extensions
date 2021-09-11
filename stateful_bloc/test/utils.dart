@@ -8,7 +8,7 @@ Future expectStates({
   required ActionType type,
   required Stream<StatefulState<Data>> stream,
   Data? initial,
-  Outcome<Data> outcome = const Outcome.finish(),
+  Outcome<Data> outcome = const Outcome.finished(),
 }) async {
   final statuses = [
     ActionStatus.ongoing,

@@ -11,13 +11,13 @@ class Outcome<Data> {
   final Data? data;
 
   /// Indicates the action successfully finished
-  const Outcome.finish([this.data]) : status = ActionStatus.done;
+  const Outcome.finished([this.data]) : status = ActionStatus.done;
 
   /// Indicates the action failed
-  const Outcome.fail([this.data]) : status = ActionStatus.failed;
+  const Outcome.failed([this.data]) : status = ActionStatus.failed;
 
   /// Indicates the action was canceled
-  const Outcome.cancel([this.data]) : status = ActionStatus.canceled;
+  const Outcome.canceled([this.data]) : status = ActionStatus.canceled;
 }
 
 /// Executes a stateful action

@@ -36,7 +36,7 @@ import 'stateful_state.dart';
 ///     if (event is LoadEvent) {
 ///       yield* load(body: () {
 ///         // data loading
-///         return Action.finish(PageData(/* data */));
+///         return Outcome.finished(PageData(/* data */));
 ///       });
 ///     }
 ///   }
@@ -60,10 +60,10 @@ mixin StatefulBloc<Event, Data> on Bloc<Event, StatefulState<Data>> {
   /// 2. User provided `body` function is executed
   /// 3. Upon completion the [Outcome.data] is set (if provided) along
   /// with the final status determined by the [Outcome] constructor:
-  ///     * [Action.finish] sets [ActionStatus.done]
+  ///     * [Outcome.finished] sets [ActionStatus.done]
   ///     (default if no value is returned)
-  ///     * [Action.fail] sets [ActionStatus.failed]
-  ///     * [Action.cancel] sets [ActionStatus.canceled]
+  ///     * [Outcome.failed] sets [ActionStatus.failed]
+  ///     * [Outcome.canceled] sets [ActionStatus.canceled]
   ///
   /// If anything is thrown from `body` a [ActionStatus.failed]
   /// status is set and the details are forwarded to [onError]

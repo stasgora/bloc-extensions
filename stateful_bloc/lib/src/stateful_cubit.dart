@@ -17,7 +17,7 @@ import 'stateful_state.dart';
 ///
 ///   void loadPage() => load(body: () {
 ///     // data loading
-///     return Action.finish(PageData(/* data */));
+///     return Outcome.finished(PageData(/* data */));
 ///   });
 /// }
 /// ```

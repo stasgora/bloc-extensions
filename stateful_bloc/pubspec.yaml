@@ -1,5 +1,5 @@
 name: stateful_bloc
-description: An extension to the bloc state management library which simplifies common state transitions
+description: An extension to the bloc state management library that simplifies common state transition sequences
 version: 1.0.0
 
 environment:

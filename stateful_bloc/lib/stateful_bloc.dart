@@ -1,20 +1,20 @@
 /// An extension to the bloc state management library
-/// which simplifies common state transitions.
+/// that simplifies common state transition sequences.
 ///
-/// ## Background
+/// ## Use case
 /// Stateful extension is built to support the
 /// commonly used patterns of __data loading__ and __submission__.
-/// Each one of them usually consist of the following state classes:
-/// * `NameInitial`
-/// * `NameActionInProgress`
-/// * `NameActionSuccess`
-/// * `NameActionFailure`
+/// Each one of them usually consist of the following states:
+/// * `SubjectInitial`
+/// * `SubjectActionInProgress`
+/// * `SubjectActionSuccess`
+/// * `SubjectActionFailure`
 ///
 /// They are commonly used as follows:
-/// * `NameInitial` is the `initialState` set in constructor
-/// * when the action is triggered the `NameActionInProgress` is set
+/// * `SubjectInitial` is the `initialState` set in constructor
+/// * when the action is triggered the `SubjectActionInProgress` is set
 /// * some logic is executed to fetch / send / transform the data
-/// * depending on the outcome `NameActionSuccess` / `NameActionFailure` is set
+/// * depending on the outcome `SubjectActionSuccess` / `SubjectActionFailure` is set
 ///
 /// This extension abstracts away both the state types and their
 /// transitions leaving only the logic to be supplied by the implementer.
@@ -35,6 +35,7 @@
 /// * __State__ - the whole Bloc / Cubit state ([StatefulState<Data>])
 /// * __Data__ - user provided state data container ([StatefulState.data])
 /// * __Action__ - either loading or submission operation
+/// * __Outcome__ - result of an action ([Outcome])
 /// * __Status__ - one of the possible states of an action ([ActionStatus])
 ///
 /// ## State type abstraction
@@ -50,42 +51,6 @@
 /// are passed to them. Final status is determined by its returning value.
 /// Each underlying state type transition can also change its data.
 /// Check [StatefulBloc.load] and [StatefulBloc.submit] for the details.
-///
-/// ## Example
-/// ### From
-/// ```dart
-/// abstract class PageState extends Equatable {
-///   @override
-///   List<Object> get props => [];
-/// }
-///
-/// class PageStateInitial extends PageState {}
-///
-/// class PageStateLoadInProgress extends PageState {}
-///
-/// class PageStateLoadSuccess extends PageState {
-///   final String data;
-///
-///   const LoadSuccess(this.data);
-///
-///   @override
-///   List<Object>? get props => [data];
-/// }
-///
-/// class PageStateLoadFailure extends PageState {}
-/// ```
-/// ### To
-/// (used as `StatefulState<PageData>`)
-/// ```dart
-/// class PageData extends Equatable {
-///   final String data;
-///
-///   const PageData(this.data);
-///
-///   @override
-///   List<Object>? get props => [data];
-/// }
-/// ```
 library stateful_bloc;
 
 export 'src/stateful_base.dart' show Outcome;

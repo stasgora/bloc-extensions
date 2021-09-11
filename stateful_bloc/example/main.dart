@@ -18,9 +18,9 @@ class SimpleBlocObserver extends BlocObserver {
 class TestCubit extends Cubit<StatefulState<int>> with StatefulCubit {
   TestCubit() : super(StatefulState(data: 0));
 
-  void successfullyLoad() => load(body: () => Outcome.finish(1));
+  void successfullyLoad() => load(body: () => Outcome.finished(1));
 
-  void failToSubmit() => submit(body: () => Outcome.fail());
+  void failToSubmit() => submit(body: () => Outcome.failed());
 }
 
 enum Event { successfullyLoad, failToSubmit }
@@ -31,9 +31,9 @@ class TestBloc extends Bloc<Event, StatefulState<int>> with StatefulBloc {
   @override
   Stream<StatefulState<int>> mapEventToState(Event event) async* {
     if (event == Event.successfullyLoad) {
-      yield* load(body: () => Outcome.finish(1));
+      yield* load(body: () => Outcome.finished(1));
     } else if (event == Event.failToSubmit) {
-      yield* submit(body: () => Outcome.fail());
+      yield* submit(body: () => Outcome.failed());
     }
   }
 }
