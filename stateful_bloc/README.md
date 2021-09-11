@@ -14,7 +14,7 @@ Extension to the Bloc library that simplifies common state transition sequences
 ---
 
 ## Use case
-Stateful extension is built to support __data loading__ and __submission__ 
+Stateful extension is built to support __data loading__ and __submission__
 patterns which are commonly implemented using Bloc.
 Each one of them usually consist of the following states:
 `SubjectInitial`, `SubjectActionInProgress`, `SubjectActionSuccess`, `SubjectActionFailure`
@@ -24,18 +24,18 @@ They are commonly used as follows:
 - when the action is triggered the `SubjectActionInProgress` is set
 - some logic is executed to fetch / send / transform the data
 - depending on the outcome `SubjectActionSuccess` / `SubjectActionFailure` is set
-  
+
 This extension abstracts away both the state types and their
 transitions leaving only the logic to be supplied by the implementer.
 
 ## Usage comparison
 
-Example of a generic cubit that provides state to a page, allowing it to display a loading indicator
+Example of a generic cubit that provides state to a page, allowing it to display a loading indicator and error message
 
 ### Cubit
 
 <div align="center"><table>
-<tr><td> Pure cubit: </td> <td> Stateful cubit: </td></tr>
+<tr><td align="center"> Pure cubit </td> <td align="center"> Stateful cubit </td></tr>
 <tr><td>
 
 ```dart
@@ -54,7 +54,7 @@ class PageCubit extends Cubit<PageState> {
 }
 ```
 
-</td><td>
+</td><td valign="top">
 
 ```dart
 class PageCubit extends Cubit
@@ -74,7 +74,7 @@ class PageCubit extends Cubit
 ### State
 
 <div align="center"><table>
-<tr><td> Pure cubit state: </td> <td> Stateful state: </td></tr>
+<tr><td align="center"> Pure cubit state </td> <td align="center"> Stateful state </td></tr>
 <tr><td>
 
 ```dart
@@ -99,7 +99,7 @@ class PageStateLoadSuccess extends PageState {
 class PageStateLoadFailure extends PageState {}
 ```
 
-</td><td>
+</td><td valign="top">
 
 ```dart
 // used as StatefulState<PageData>
@@ -119,13 +119,13 @@ class PageData extends Equatable {
 ## Advantages
 Main advantages of using the Stateful extension:
 - __Cubit / Bloc simplification__ - you don't have to worry
-about states, just focus on the logic and the data it changes
+  about states, just focus on the logic and the data it changes
 - __State simplification__ - no more repeating the same inheritance tree
-for each component, just focus on the data that's being provided
+  for each component, just focus on the data that's being provided
 - __Uniform state types across the whole codebase__ - aside from
-the standardization itself this makes it easier to reuse state dependent
-widgets across multiple UI components (like showing a loading indicator
-on `ActionStatus.ongoing` or an error message on `ActionStatus.failed`).
+  the standardization itself this makes it easier to reuse state dependent
+  widgets across multiple UI components (like showing a loading indicator
+  on `ActionStatus.ongoing` or an error message on `ActionStatus.failed`).
 
 ## Maintainers
 - [Stanisław Góra](https://github.com/stasgora/)
