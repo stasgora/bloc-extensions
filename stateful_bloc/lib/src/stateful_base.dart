@@ -2,29 +2,29 @@ import 'dart:async';
 
 import 'stateful_state.dart';
 
-/// Result of a gracefully finished action
-class Action<Data> {
-  /// Action result status
+/// Outcome of a gracefully finished action
+class Outcome<Data> {
+  /// Outcome status
   final ActionStatus status;
 
-  /// User provided result data
+  /// User provided outcome data
   final Data? data;
 
   /// Indicates the action successfully finished
-  const Action.finish([this.data]) : status = ActionStatus.done;
+  const Outcome.finish([this.data]) : status = ActionStatus.done;
 
   /// Indicates the action failed
-  const Action.fail([this.data]) : status = ActionStatus.failed;
+  const Outcome.fail([this.data]) : status = ActionStatus.failed;
 
   /// Indicates the action was canceled
-  const Action.cancel([this.data]) : status = ActionStatus.canceled;
+  const Outcome.cancel([this.data]) : status = ActionStatus.canceled;
 }
 
 /// Executes a stateful action
 Stream<StatefulState<Data>> execute<Data>({
   required StatefulState<Data> state,
   required ActionType type,
-  required FutureOr<Action<Data>?> Function() body,
+  required FutureOr<Outcome<Data>?> Function() body,
   required void Function(Object, StackTrace) onError,
   Data? initialData,
 }) async* {
@@ -36,10 +36,10 @@ Stream<StatefulState<Data>> execute<Data>({
     submissionStatus: set(ActionStatus.ongoing, ActionType.submission),
   );
   try {
-    var action = await body();
-    var status = action?.status ?? ActionStatus.done;
+    var outcome = await body();
+    var status = outcome?.status ?? ActionStatus.done;
     yield state.copyWith(
-      data: action?.data,
+      data: outcome?.data,
       loadingStatus: set(status, ActionType.loading),
       submissionStatus: set(status, ActionType.submission),
     );

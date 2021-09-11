@@ -5,6 +5,22 @@ import 'package:test/test.dart';
 import 'models.dart';
 import 'utils.dart';
 
+Map<ActionStatus, bool Function(StatefulState)> _loadingPairs = {
+  ActionStatus.initial: (s) => s.notLoaded,
+  ActionStatus.ongoing: (s) => s.beingLoaded,
+  ActionStatus.done: (s) => s.loaded,
+  ActionStatus.failed: (s) => s.loadFailed,
+  ActionStatus.canceled: (s) => s.loadCanceled,
+};
+
+Map<ActionStatus, bool Function(StatefulState)> _submissionPairs = {
+  ActionStatus.initial: (s) => s.notSubmitted,
+  ActionStatus.ongoing: (s) => s.beingSubmitted,
+  ActionStatus.done: (s) => s.submitted,
+  ActionStatus.failed: (s) => s.submitFailed,
+  ActionStatus.canceled: (s) => s.submitCanceled,
+};
+
 void main() {
   group('Stateful extension', () {
     group('Cubit', () {
@@ -25,7 +41,7 @@ void main() {
         await expectStates(
           stream: cubit.stream,
           type: type,
-          result: Action.fail(),
+          outcome: Outcome.fail(),
         );
         expect(expectedError, error);
       }
@@ -75,7 +91,7 @@ void main() {
         await expectStates(
           stream: bloc.stream,
           type: type,
-          result: Action.fail(),
+          outcome: Outcome.fail(),
         );
         expect(expectedError, error);
       }
@@ -99,6 +115,18 @@ void main() {
       });
       test('passes submit errors to onError', () {
         testFailBloc(ActionType.submission);
+      });
+    });
+    group('State', () {
+      test('Loading indicators', () {
+        for (var pair in _loadingPairs.entries) {
+          expect(pair.value(StatefulState(loadingStatus: pair.key)), isTrue);
+        }
+      });
+      test('Submission indicators', () {
+        for (var pair in _submissionPairs.entries) {
+          expect(pair.value(StatefulState(submissionStatus: pair.key)), isTrue);
+        }
       });
     });
   });

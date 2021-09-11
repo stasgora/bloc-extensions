@@ -14,7 +14,7 @@
 /// * `NameInitial` is the `initialState` set in constructor
 /// * when the action is triggered the `NameActionInProgress` is set
 /// * some logic is executed to fetch / send / transform the data
-/// * depending on the result `NameActionSuccess` / `NameActionFailure` is set
+/// * depending on the outcome `NameActionSuccess` / `NameActionFailure` is set
 ///
 /// This extension abstracts away both the state types and their
 /// transitions leaving only the logic to be supplied by the implementer.
@@ -88,7 +88,7 @@
 /// ```
 library stateful_bloc;
 
-export 'src/stateful_base.dart' show Action;
+export 'src/stateful_base.dart' show Outcome;
 export 'src/stateful_bloc.dart';
 export 'src/stateful_cubit.dart';
 export 'src/stateful_state.dart' hide ActionType;

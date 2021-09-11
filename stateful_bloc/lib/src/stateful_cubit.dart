@@ -35,7 +35,7 @@ mixin StatefulCubit<Data> on Cubit<StatefulState<Data>> {
   /// {@macro stateful_flow}
   @protected
   Future load({
-    required FutureOr<Action<Data>?> Function() body,
+    required FutureOr<Outcome<Data>?> Function() body,
     Data? initialData,
   }) async {
     if (state.beingLoaded) return;
@@ -53,7 +53,7 @@ mixin StatefulCubit<Data> on Cubit<StatefulState<Data>> {
   /// {@macro stateful_flow}
   @protected
   Future submit({
-    required FutureOr<Action<Data>?> Function() body,
+    required FutureOr<Outcome<Data>?> Function() body,
     Data? initialData,
   }) async {
     if (state.beingSubmitted) return;

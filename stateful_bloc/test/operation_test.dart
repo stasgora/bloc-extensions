@@ -23,7 +23,7 @@ void main() {
     Future testRun({
       required ActionType type,
       Data? initial,
-      Action<Data>? result = const Action.finish(),
+      Outcome<Data>? outcome = const Outcome.finish(),
       Object? error,
     }) async {
       await expectStates(
@@ -32,14 +32,14 @@ void main() {
           type: type,
           body: () {
             if (error != null) throw error;
-            return result;
+            return outcome;
           },
           initialData: initial,
           onError: errorHandler.onError,
         ),
         type: type,
         initial: initial,
-        result: error == null ? result! : Action.fail(),
+        outcome: error == null ? outcome! : Outcome.fail(),
       );
       if (error == null) verifyZeroInteractions(errorHandler);
     }
@@ -52,14 +52,14 @@ void main() {
             'when cancel is used',
             () => testRun(
               type: type,
-              result: Action.cancel(),
+              outcome: Outcome.cancel(),
             ),
           );
           test(
             'when fail is used',
             () => testRun(
               type: type,
-              result: Action.fail(),
+              outcome: Outcome.fail(),
             ),
           );
         });
@@ -67,13 +67,13 @@ void main() {
           testRun(type: type, initial: Data.initial);
         });
         test('emits loaded data', () {
-          testRun(type: type, result: Action.finish(Data.loaded));
+          testRun(type: type, outcome: Outcome.finish(Data.loaded));
         });
         test('combines initial & loaded data', () {
           testRun(
             type: type,
             initial: Data.initial,
-            result: Action.finish(Data.loaded),
+            outcome: Outcome.finish(Data.loaded),
           );
         });
       });

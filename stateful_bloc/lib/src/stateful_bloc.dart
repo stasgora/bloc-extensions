@@ -58,8 +58,8 @@ mixin StatefulBloc<Event, Data> on Bloc<Event, StatefulState<Data>> {
   /// immediately, otherwise [ActionStatus.ongoing] status is set
   /// along with the `initialData` (if provided)
   /// 2. User provided `body` function is executed
-  /// 3. Upon completion the [Action.data] is set (if provided) along
-  /// with the final status determined by the [Action] constructor:
+  /// 3. Upon completion the [Outcome.data] is set (if provided) along
+  /// with the final status determined by the [Outcome] constructor:
   ///     * [Action.finish] sets [ActionStatus.done]
   ///     (default if no value is returned)
   ///     * [Action.fail] sets [ActionStatus.failed]
@@ -70,7 +70,7 @@ mixin StatefulBloc<Event, Data> on Bloc<Event, StatefulState<Data>> {
   /// {@endtemplate}
   @protected
   Stream<StatefulState<Data>> load({
-    required FutureOr<Action<Data>?> Function() body,
+    required FutureOr<Outcome<Data>?> Function() body,
     Data? initialData,
   }) async* {
     if (state.beingLoaded) return;
@@ -91,7 +91,7 @@ mixin StatefulBloc<Event, Data> on Bloc<Event, StatefulState<Data>> {
   /// {@macro stateful_flow}
   @protected
   Stream<StatefulState<Data>> submit({
-    required FutureOr<Action<Data>?> Function() body,
+    required FutureOr<Outcome<Data>?> Function() body,
     Data? initialData,
   }) async* {
     if (state.beingSubmitted) return;

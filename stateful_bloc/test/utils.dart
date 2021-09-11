@@ -8,18 +8,18 @@ Future expectStates({
   required ActionType type,
   required Stream<StatefulState<Data>> stream,
   Data? initial,
-  Action<Data> result = const Action.finish(),
+  Outcome<Data> outcome = const Outcome.finish(),
 }) async {
   final statuses = [
     ActionStatus.ongoing,
-    result.status,
+    outcome.status,
   ];
   return expectLater(
     stream,
     emitsInOrder(statesWith(
       loading: type == ActionType.loading ? statuses : null,
       submission: type == ActionType.submission ? statuses : null,
-      data: [initial, result.data ?? initial],
+      data: [initial, outcome.data ?? initial],
     )),
   );
 }
