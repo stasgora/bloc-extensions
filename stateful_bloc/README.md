@@ -8,7 +8,7 @@
 <a href="https://github.com/dart-lang/lints"><img src="https://img.shields.io/badge/style-recommended-40c4ff.svg" alt="style: effective dart"></a>
 <a href="https://github.com/stasgora/bloc-extensions/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
 
-Extension to the Bloc library that simplifies common state transition sequences
+Extension to the [Bloc](https://pub.dev/packages/bloc) library that simplifies common state transition sequences
 </div>
 
 ---
@@ -32,9 +32,10 @@ transitions leaving only the logic to be supplied by the implementer.
 
 Example of a generic cubit that provides state to a page, allowing it to display a loading indicator and error message
 
+<div align="center"><table>
+
 ### Cubit
 
-<div align="center"><table>
 <tr><td align="center"> Pure cubit </td> <td align="center"> Stateful cubit </td></tr>
 <tr><td>
 
@@ -69,11 +70,11 @@ class PageCubit extends Cubit
 ```
 
 </td></tr>
-</table></div>
+</table>
 
 ### State
 
-<div align="center"><table>
+<table>
 <tr><td align="center"> Pure cubit state </td> <td align="center"> Stateful state </td></tr>
 <tr><td>
 
@@ -129,6 +130,8 @@ Main advantages of using the Stateful extension:
 
 ## Maintainers
 - [Stanisław Góra](https://github.com/stasgora/)
+
+Special thanks to [Felix Angelov](https://github.com/felangel) and other [Bloc](https://pub.dev/packages/bloc) library contributors
 
 ## License
 This library is licenced under [`MIT License`](https://github.com/stasgora/round-spot/blob/master/LICENSE)
